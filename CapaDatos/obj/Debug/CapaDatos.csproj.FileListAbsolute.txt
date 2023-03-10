@@ -1,0 +1,18 @@
+D:\Sistema Web de Ventas\SistemaWeb\CapaDatos\bin\Debug\CapaDatos.dll
+D:\Sistema Web de Ventas\SistemaWeb\CapaDatos\bin\Debug\CapaDatos.pdb
+D:\Sistema Web de Ventas\SistemaWeb\CapaDatos\bin\Debug\CapaEntidad.dll
+D:\Sistema Web de Ventas\SistemaWeb\CapaDatos\bin\Debug\CapaEntidad.pdb
+D:\Sistema Web de Ventas\SistemaWeb\CapaDatos\obj\Debug\CapaDatos.csproj.AssemblyReference.cache
+D:\Sistema Web de Ventas\SistemaWeb\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+D:\Sistema Web de Ventas\SistemaWeb\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
+D:\Sistema Web de Ventas\SistemaWeb\CapaDatos\obj\Debug\CapaDatos.dll
+D:\Sistema Web de Ventas\SistemaWeb\CapaDatos\obj\Debug\CapaDatos.pdb
+C:\Users\Jose Flores\Desktop\SistemaWeb\SistemaWeb\CapaDatos\bin\Debug\CapaDatos.dll
+C:\Users\Jose Flores\Desktop\SistemaWeb\SistemaWeb\CapaDatos\bin\Debug\CapaDatos.pdb
+C:\Users\Jose Flores\Desktop\SistemaWeb\SistemaWeb\CapaDatos\bin\Debug\CapaEntidad.dll
+C:\Users\Jose Flores\Desktop\SistemaWeb\SistemaWeb\CapaDatos\bin\Debug\CapaEntidad.pdb
+C:\Users\Jose Flores\Desktop\SistemaWeb\SistemaWeb\CapaDatos\obj\Debug\CapaDatos.csproj.AssemblyReference.cache
+C:\Users\Jose Flores\Desktop\SistemaWeb\SistemaWeb\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+C:\Users\Jose Flores\Desktop\SistemaWeb\SistemaWeb\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
+C:\Users\Jose Flores\Desktop\SistemaWeb\SistemaWeb\CapaDatos\obj\Debug\CapaDatos.dll
+C:\Users\Jose Flores\Desktop\SistemaWeb\SistemaWeb\CapaDatos\obj\Debug\CapaDatos.pdb

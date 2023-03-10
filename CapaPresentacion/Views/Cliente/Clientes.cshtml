@@ -1,0 +1,262 @@
+﻿
+@{
+    ViewBag.Title = "Clientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item"><a href="index.html">Resumen</a></li>
+    <li class="breadcrumb-item active">Clientes</li>
+</ol>
+
+<div class="card">
+
+    <div class="card-header">
+        <i class="fas fa-users m-1"></i> LISTA DE CLIENTES
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <button type="button" class="btn btn-success" onclick="ModalCrearCliente(null)">Nuevo cliente</button>
+            </div>
+        </div>
+
+        <hr />
+
+        <table id="tabla" class="display cell-border" style="width: 100%">
+            <thead>
+                <tr>
+                    @*<th>Codigo</th>*@
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Correo</th>
+                    <th>Direccion</th>
+                    <th>Distrito</th>
+                    <th>Telefono</th>
+                    <th>Celular</th>
+                    <th>DNI</th>
+                    <th>RUC</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="exampleModalLabel">NUEVO CLIENTE</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input id="txtid" type="hidden" value="0" /> @* codigo de cliente*@
+                <div class="row g-2">
+                    <div class="col-sm-6">
+                        <label for="txtnombres" class="form-label">Nombres</label>
+                        <input type="text" class="form-control" id="txtnombres">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtapellidos" class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" id="txtapellidos">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtdireccion" class="form-label">Direccion</label>
+                        <input type="text" class="form-control" id="txtdireccion">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtdistrito" class="form-label">Distrito</label>
+                        <input type="text" class="form-control" id="txtdistrito">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txttelefono" class="form-label">Telefono</label>
+                        <input type="text" class="form-control" id="txttelefono">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtcelular" class="form-label">Celular</label>
+                        <input type="text" class="form-control" id="txtcelular">
+                    </div>
+                    <div class="col-sm-12">
+                        <label for="txtcorreo" class="form-label">Correo</label>
+                        <input type="text" class="form-control" id="txtcorreo">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtdni" class="form-label">DNI</label>
+                        <input type="text" class="form-control" id="txtdni">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtruc" class="form-label">RUC</label>
+                        <input type="text" class="form-control" id="txtruc">
+                    </div>
+                    @*<div class="col-sm-6">
+                    <label for="cbodocumento" class="form-label">Documento</label>
+                    <select id="cbodocumento" class="form-select">
+                    <option selected>Seleccione</option>
+                    <option value="1">DNI</option>
+                    <option value="2">RUC</option>
+                    </select>
+                    </div>*@
+
+
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <div id="MensajeError" class="alert alert-danger" role="alert">
+                            A simple danger alert—check it out!
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+    {
+    <script>
+
+        var tabladata;
+
+
+        //$(document).ready(function () {
+
+        tabladata = $("#tabla").DataTable({
+            responsive: true,
+            ordering: false,
+            "ajax": {
+                url: '@Url.Action("ListarClientes", "Cliente")',
+                type: "GET",
+                dataType: "json"
+            },
+            "columns": [
+                //{ "data": "cod_cliente" },
+                { "data": "nombres" },
+                { "data": "apellidos" },
+                { "data": "correo" },
+                { "data": "direccion" },
+                { "data": "Distrito" },
+                { "data": "telefono" },
+                { "data": "celular" },
+                { "data": "dni" },
+                { "data": "ruc" },
+                {
+                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i></button>' + //boton editar
+                        '<button type="button" class="btn btn-danger btn-sm ms-2"><i class="fas fa-trash"></i></button>',          //boton borrar
+                    "orderable": false,
+                    "searchable": false,
+                    "width":"90px"
+                }
+            ],
+            "language": {
+                "url":"https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+            }
+
+        });
+        /*});*/
+
+        function ModalCrearCliente(json)
+        {
+            $("#txtid").val("0");
+            $("#txtnombres").val("");
+            $("#txtapellidos").val("");
+            $("#txtcorreo").val("");
+            $("#txtdireccion").val("");
+            $("#txtdistrito").val("");
+            $("#txttelefono").val("");
+            $("#txtcelular").val("");
+            $("#txtdni").val("");
+            $("#txtruc").val("");
+
+            $("#MensajeError").hide();
+            
+            if (json != null)
+            {
+                $("#txtid").val(json.cod_cliente);
+                $("#txtnombres").val(json.nombres);
+                $("#txtapellidos").val(json.apellidos);
+                $("#txtcorreo").val(json.correo);
+                $("#txtdireccion").val(json.direccion);
+                $("#txtdistrito").val(json.Distrito);
+                $("#txttelefono").val(json.telefono);
+                $("#txtcelular").val(json.celular);
+                $("#txtdni").val(json.dni);
+                $("#txtruc").val(json.ruc)
+            }
+
+            $("#FormModal").modal("show");
+        }
+
+        $("#tabla tbody").on("click", '.btn-editar', function ()
+            {
+                var filaSeleccionada = $(this).closest("tr");
+            var data = tabladata.row(filaSeleccionada).data();
+
+            ModalCrearCliente(data)
+
+        })
+
+        function Guardar()
+        {
+
+            var cliente =
+            {
+                cod_cliente: $("#txtid").val(),
+                nombres: $("#txtnombres").val(),
+                apellidos: $("#txtapellidos").val(),
+                correo: $("#txtcorreo").val(),
+                direccion: $("#txtdireccion").val(),
+                Distrito: $("#txtdistrito").val(),
+                telefono: $("#txttelefono").val(),
+                celular: $("#txtcelular").val(),
+                dni: $("#txtdni").val(),
+                ruc: $("#txtruc").val()
+            }
+
+            jQuery.ajax({
+                url:'@Url.Action("CrearEditarCliente", "Cliente")',
+                type: "POST",
+                data: JSON.stringify({ objeto: cliente }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data)
+                {
+                    
+                    if (cliente.cod_cliente == 0) // cliente nuevo
+                    {
+                        
+                        if (data.resultado != 0) {
+                            cliente.cod_cliente = data.resultado;
+                            tabladata.row.add(cliente).draw(false);
+                            $("#FormModal").modal("hide");
+                        }
+                        else
+                        {
+                            $("#MensajeError").text(data.mensaje);
+                            $("#MensajeError").show();
+                        }
+                        
+                    }
+
+                },
+            })
+
+
+
+        }
+
+    </script>
+}
+
+

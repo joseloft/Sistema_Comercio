@@ -1,0 +1,11 @@
+D:\Sistema Web de Ventas\SistemaWeb\CapaEntidad\bin\Debug\CapaEntidad.dll
+D:\Sistema Web de Ventas\SistemaWeb\CapaEntidad\bin\Debug\CapaEntidad.pdb
+D:\Sistema Web de Ventas\SistemaWeb\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+D:\Sistema Web de Ventas\SistemaWeb\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+D:\Sistema Web de Ventas\SistemaWeb\CapaEntidad\obj\Debug\CapaEntidad.dll
+D:\Sistema Web de Ventas\SistemaWeb\CapaEntidad\obj\Debug\CapaEntidad.pdb
+C:\Users\Jose Flores\Desktop\SistemaWeb\SistemaWeb\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\Users\Jose Flores\Desktop\SistemaWeb\SistemaWeb\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\Users\Jose Flores\Desktop\SistemaWeb\SistemaWeb\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\Jose Flores\Desktop\SistemaWeb\SistemaWeb\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\Users\Jose Flores\Desktop\SistemaWeb\SistemaWeb\CapaEntidad\obj\Debug\CapaEntidad.pdb
