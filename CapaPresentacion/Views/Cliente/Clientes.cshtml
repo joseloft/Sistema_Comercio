@@ -22,30 +22,29 @@
             </div>
         </div>
 
-        <hr />
-
-        <table id="tabla" class="display cell-border" style="width: 100%">
-            <thead>
-                <tr>
-                    @*<th>Codigo</th>*@
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
-                    <th>Correo</th>
-                    <th>Direccion</th>
-                    <th>Distrito</th>
-                    <th>Telefono</th>
-                    <th>Celular</th>
-                    <th>DNI</th>
-                    <th>RUC</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table id="tabla" class="table table-cebra table-bordered table-hover table-striped" style="width: 100%">
+                <thead style="background-color: #13213d !important; color: white; font-size: 14px;">
+                    <tr style="font-size: 14px;">
+                        @*<th>Codigo</th>*@
+                        <th style='max-width:45px;min-width:45px;text-align:center'>Accion</th>
+                        <th style='text-align:center'>Nombres</th>
+                        <th style='text-align:center'>Apellidos</th>
+                        <th style='text-align:center'>Correo</th>
+                        <th style='text-align:center'>Direccion</th>
+                        <th style='text-align:center'>Distrito</th>
+                        <th style='text-align:center'>Telefono</th>
+                        <th style='text-align:center'>Celular</th>
+                        <th style='text-align:center'>DNI</th>
+                        <th style='text-align:center'>RUC</th>
+                    </tr>
+                </thead>
+                <tbody style="font-size:12px">
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
-
 
 <!-- Modal -->
 <div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
@@ -128,36 +127,58 @@
     <script>
 
         var tabladata;
-
-
         //$(document).ready(function () {
 
-        tabladata = $("#tabla").DataTable({
-            responsive: true,
-            ordering: false,
+        tabladata = $("#tabla").DataTable({            
             "ajax": {
                 url: '@Url.Action("ListarClientes", "Cliente")',
                 type: "GET",
                 dataType: "json"
             },
+            scrollX: true,
+            scrollCollapse: true,
+            orderCellsTop: true,
+            fixedHeader: false,
+            responsive: true,
+            ordering: false,
+            info: true,
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'excel', text: '<i class="fas fa-file-excel fa-lg text-success" aria-hidden="true"> </i> Excel', footer: true
+                }
+            ],
             "columns": [
                 //{ "data": "cod_cliente" },
-                { "data": "nombres" },
-                { "data": "apellidos" },
-                { "data": "correo" },
-                { "data": "direccion" },
-                { "data": "Distrito" },
-                { "data": "telefono" },
-                { "data": "celular" },
-                { "data": "dni" },
-                { "data": "ruc" },
                 {
-                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i></button>' + //boton editar
-                        '<button type="button" class="btn btn-danger btn-sm ms-2"><i class="fas fa-trash"></i></button>',          //boton borrar
-                    "orderable": false,
-                    "searchable": false,
-                    "width":"90px"
-                }
+                    "defaultContent":
+                        '<button type="button" style="font-size:12px" class="btn btn-sm btn-primary"><i class="fas fa-edit fa-sm"></i></button>' + //boton editar
+                        '<button type="button" style="font-size:12px" class="btn btn-sm btn-danger"><i class="fas fa-trash fa-sm"></i></button>',//boton borrar
+                },
+                { "data": "nombres", "name": "nombres", render: function (data, type, row) {
+                    return "<textarea rows='1' style='min-width:100px;font-size:11px' class='form-control form-control-sm' readonly>" + data + "</textarea>";
+                    }
+                },
+                { "data": "apellidos", "name": "apellidos", render: function (data, type, row) {
+                    return "<textarea rows='1' style='min-width:120px;font-size:11px' class='form-control form-control-sm' readonly>" + data + "</textarea>";
+                    }
+                },
+                { "data": "correo", "name": "correo", render: function (data, type, row) {
+                    return "<textarea rows='1' style='min-width:150px;font-size:11px' class='form-control form-control-sm' readonly>" + data + "</textarea>";
+                    }
+                },
+                { "data": "direccion", "name": "direccion", render: function (data, type, row) {
+                    return "<textarea rows='1' style='min-width:200px;font-size:11px' class='form-control form-control-sm' readonly>" + data + "</textarea>";
+                    }
+                },
+                { "data": "Distrito", "name": "Distrito", render: function (data, type, row) {
+                    return "<textarea rows='1' style='min-width:100px;font-size:11px' class='form-control form-control-sm' readonly>" + data + "</textarea>";
+                    }
+                },
+                { "data": "telefono"},
+                { "data": "celular"},
+                { "data": "dni"},
+                { "data": "ruc"}                
             ],
             "language": {
                 "url":"https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
@@ -231,11 +252,9 @@
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 success: function (data)
-                {
-                    
+                {                    
                     if (cliente.cod_cliente == 0) // cliente nuevo
-                    {
-                        
+                    {                        
                         if (data.resultado != 0) {
                             cliente.cod_cliente = data.resultado;
                             tabladata.row.add(cliente).draw(false);
@@ -251,9 +270,6 @@
 
                 },
             })
-
-
-
         }
 
     </script>
